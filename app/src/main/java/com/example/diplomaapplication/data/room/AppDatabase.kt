@@ -6,23 +6,21 @@ import androidx.room.DatabaseConfiguration
 import androidx.room.InvalidationTracker
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteOpenHelper
-import com.example.diplomaapplication.data.room.entities.*
-import com.example.diplomaapplication.data.room.utils.JsonConverter
+import com.example.diplomaapplication.data.room.entity.*
+import kotlinx.coroutines.CoroutineScope
+
+enum class entities {
+    BaseClasses,
+    BaseClassStatValue
+}
 
 @Database(entities = [
-    Users::class, Characters::class,
-    Class::class, CharacterStat::class,
-    Skill::class, CharacterSkill::class,
-    SkillBonus::class, Item::class,
-    CharacterInventory::class, CharacterEquipment::class,
-    Location::class, Event::class,
-    Enemy::class, EnemyLoot::class,
-    Recipe::class, Ingredient::class,
-    LearnedRecipe::class, NPC::class, Quest::class],
+    User::class, Characters::class,Characters::class,
+    BaseClasses::class, BaseClassStatValue::class,
+    Stat::class, StatValue::class
+    ],
     version = 1)
-@TypeConverters(JsonConverter::class)
 class AppDatabase : RoomDatabase() {
     companion object {
         private var INSTANCE : AppDatabase? = null
@@ -56,4 +54,9 @@ class AppDatabase : RoomDatabase() {
     override fun createOpenHelper(config: DatabaseConfiguration): SupportSQLiteOpenHelper {
         TODO("Not yet implemented")
     }
+}
+
+fun loadEntityFromJson(context : Context, scope : CoroutineScope) {
+    val db = AppDatabase.getInstance(context)
+
 }
