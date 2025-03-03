@@ -11,6 +11,7 @@ composeBom = "2025.01.01"
 roomVersion = "2.6.1"
 kspVersion = "2.1.10-1.0.29"
 gson = "2.10.1"
+daggerVersion ="2.55"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +31,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 room-compiler = {group = "androidx.room",name = "room-compiler",version.ref = "roomVersion"}
 room-ktx = {group = "androidx.room",name = "room-ktx",version.ref = "roomVersion"}
 gson = {group = "com.google.code.gson",name = "gson",version.ref = "gson"}
+dagger = {group = "com.google.dagger",name = "dagger",version.ref="daggerVersion"}
+dagger-compiler = {group = "com.google.dagger",name = "dagger-compiler",version.ref = "daggerVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

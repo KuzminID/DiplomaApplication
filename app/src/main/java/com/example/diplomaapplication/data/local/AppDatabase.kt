@@ -1,5 +1,15 @@
 package com.example.diplomaapplication.data.local
 
+import android.content.Context
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.diplomaapplication.data.local.dao.*
+import com.example.diplomaapplication.domain.entities.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 @androidx.room.Database(
     entities = [
         BaseClass::class,
@@ -18,7 +28,11 @@ package com.example.diplomaapplication.data.local
         Item::class,
         EquipmentSlot::class,
         Equipment::class,
-        Skill::class
+        EquippedItem::class,
+        Skill::class,
+        Events::class,
+        EventsHistory::class,
+        EventHistoryItem::class
     ],
     version = 1,
     exportSchema = false
@@ -34,6 +48,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun getRecipesDao(): RecipesDao
     abstract fun getStatsDao(): StatsDao
     abstract fun getUserDao(): UserDao
+    internal abstract fun getInitializationDao() : InitializationDao
 
     companion object {
 
@@ -48,8 +63,16 @@ abstract class AppDatabase : RoomDatabase() {
                         context.applicationContext,
                         AppDatabase::class.java,
                         "app_database"
-                    ).build()
-
+                    )
+                        .addCallback(object : Callback() {
+                            override fun onCreate(db: SupportSQLiteDatabase) {
+                                super.onCreate(db)
+                                CoroutineScope(Dispatchers.IO).launch{
+                                    instance?.getInitializationDao()?.initializeDatabase()
+                                }
+                            }
+                        })
+                        .build()
                     INSTANCE = instance
                 }
                 return instance

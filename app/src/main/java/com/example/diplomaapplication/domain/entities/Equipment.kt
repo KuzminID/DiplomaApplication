@@ -13,7 +13,6 @@ data class EquipmentSlot(
     val name: String
 )
 
-// Оборудование
 @Entity(
     tableName = "equipment",
     foreignKeys = [

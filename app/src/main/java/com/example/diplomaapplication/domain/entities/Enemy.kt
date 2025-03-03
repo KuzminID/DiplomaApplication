@@ -29,11 +29,10 @@ data class Enemy(
     val description: String,
     @ColumnInfo(name = "enemy_stats_id")
     val statsId: Int,
-    @ColumnInfo(name = "drop_table_id") // Связь с таблицей дропа
+    @ColumnInfo(name = "drop_table_id")
     val dropTableId: Int
 )
 
-// Таблица дропа врагов
 @Entity(
     tableName = "enemy_drops",
     foreignKeys = [

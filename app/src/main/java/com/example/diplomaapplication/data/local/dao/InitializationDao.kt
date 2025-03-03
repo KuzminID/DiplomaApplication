@@ -1,4 +1,7 @@
 package com.example.diplomaapplication.data.local.dao
 
-internal interface InitializationDao {
+internal abstract class InitializationDao() {
+    suspend fun initializeDatabase() {
+
+    }
 }

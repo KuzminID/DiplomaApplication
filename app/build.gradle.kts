@@ -46,6 +46,9 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.gson)
 
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
