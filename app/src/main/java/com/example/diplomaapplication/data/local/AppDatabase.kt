@@ -1,21 +1,6 @@
-package com.example.diplomaapplication.data.room
+package com.example.diplomaapplication.data.local
 
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.diplomaapplication.data.room.dao.CharacterDao
-import com.example.diplomaapplication.data.room.dao.EnemyDao
-import com.example.diplomaapplication.data.room.dao.EventsDao
-import com.example.diplomaapplication.data.room.dao.HistoryDao
-import com.example.diplomaapplication.data.room.dao.InventoryDao
-import com.example.diplomaapplication.data.room.dao.LocationsDao
-import com.example.diplomaapplication.data.room.dao.RecipesDao
-import com.example.diplomaapplication.data.room.dao.StatsDao
-import com.example.diplomaapplication.data.room.dao.UserDao
-import com.example.diplomaapplication.data.room.entities.*
-
-@Database(
+@androidx.room.Database(
     entities = [
         BaseClass::class,
         Character::class,
