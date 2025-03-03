@@ -8,7 +8,10 @@ class JsonConverter {
 
     @TypeConverter
     fun fromJson(value: String?): Map<String, Any>? {
-        return if (value == null) null else Gson().fromJson(value, object : TypeToken<Map<String, Any>>() {}.type)
+        return if (value == null) null else Gson().fromJson(
+            value,
+            object : TypeToken<Map<String, Any>>() {}.type
+        )
     }
 
     @TypeConverter

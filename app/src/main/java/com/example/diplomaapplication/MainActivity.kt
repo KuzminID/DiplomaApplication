@@ -30,6 +30,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+//TODO регулярные выражения для проверки почты
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
