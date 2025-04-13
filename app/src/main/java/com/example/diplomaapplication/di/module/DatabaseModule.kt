@@ -1,25 +1,36 @@
 package com.example.diplomaapplication.di.module
 
-import android.app.Application
+import android.content.Context
 import com.example.diplomaapplication.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(application: Application) = AppDatabase.getInstance(application)
+    fun provideDatabase(context: Context) = AppDatabase.getInstance(context)
 
     @Singleton
     @Provides
-    fun provideCharacterDao(database : AppDatabase) = database.getCharacterDao()
+    fun provideUserDao(database: AppDatabase) = database.getUserDao()
 
     @Singleton
     @Provides
-    fun provideEnemyDao(database: AppDatabase) = database.getEnemyDao()
+    fun provideCharactersDao(database: AppDatabase) = database.getCharacterDao()
+
+    @Singleton
+    @Provides
+    fun provideEnemyDao(database: AppDatabase) = database.getEnemiesDao()
+
+    @Singleton
+    @Provides
+    fun provideClassesDao(database: AppDatabase) = database.getClassesDao()
 
     @Singleton
     @Provides
@@ -27,25 +38,17 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideHistoryDao(database: AppDatabase) = database.getHistoryDao()
-
-    @Singleton
-    @Provides
-    fun provideInventoryDao(database: AppDatabase) = database.getInventoryDao()
-
-    @Singleton
-    @Provides
-    fun provideLocationsDao(database: AppDatabase) = database.getLocationsDao()
-
-    @Singleton
-    @Provides
-    fun provideRecipesDao(database: AppDatabase) = database.getRecipesDao()
-
-    @Singleton
-    @Provides
     fun provideStatsDao(database: AppDatabase) = database.getStatsDao()
 
     @Singleton
     @Provides
-    fun provideUserDao(database: AppDatabase) = database.getUserDao()
+    fun provideEnemyStatsDao(database: AppDatabase) = database.getEnemyStatsDao()
+
+    @Singleton
+    @Provides
+    fun provideStatDao(database: AppDatabase) = database.getStatDao()
+
+    @Singleton
+    @Provides
+    fun provideLocationDao(database: AppDatabase) = database.getLocationsDao()
 }

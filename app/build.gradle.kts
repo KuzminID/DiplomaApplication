@@ -1,8 +1,11 @@
+import org.gradle.kotlin.dsl.android
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -17,8 +20,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -46,8 +49,13 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.gson)
 
-    implementation(libs.dagger)
-    ksp(libs.dagger.compiler)
+    implementation(libs.hilt.navigation)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.google.fonts)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

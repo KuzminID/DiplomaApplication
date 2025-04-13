@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">DiplomaApplication</string>
+    <string name="app_name" translatable="false">DiplomaApplication</string>
+    <string name="hello_user_message">Hello %1$s</string>
+    <string name="character_name_input_message">Input character name</string>
+    <string name="base_class_input_message">Choose your base class</string>
+    <string name="character_name">Name : %1$s</string>
+    <string name="character_class">Class : %1$s</string>
+    <string name="character_level">Level : %1$s</string>
 </resources>

@@ -1,8 +1,16 @@
 package com.example.diplomaapplication.data.local.dao
 
 import androidx.room.Dao
-import com.example.diplomaapplication.data.room.entities.Enemy
+import androidx.room.Query
+import com.example.diplomaapplication.data.local.entities.Enemies
+import com.example.diplomaapplication.data.local.entities.EnemyStats
 
 @Dao
-abstract class EnemyDao : BaseDao<Enemy>() {
+interface EnemyDao : BaseDao<Enemies> {
+    @Query("SELECT * FROM enemies")
+    fun getAllEnemies() : List<Enemies>
+}
+
+@Dao
+interface EnemyStatsDao : BaseDao<EnemyStats> {
 }

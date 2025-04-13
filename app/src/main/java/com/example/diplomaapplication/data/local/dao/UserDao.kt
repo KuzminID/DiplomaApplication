@@ -2,11 +2,14 @@ package com.example.diplomaapplication.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.diplomaapplication.data.room.entities.User
+import com.example.diplomaapplication.data.local.entities.User
 
 @Dao
-abstract class UserDao : BaseDao<User>() {
+interface UserDao : BaseDao<User> {
 
     @Query("SELECT EXISTS(SELECT * FROM users WHERE (username = :username OR email = :email) AND password = :password)")
-    abstract fun authenticate(username: String?, email: String?, password: String): Boolean
+    fun authenticate(username: String?, email: String?, password: String): Long
+
+    @Query("SELECT * FROM users WHERE(id = :userId)")
+    fun getUserById(userId: Long): User
 }
